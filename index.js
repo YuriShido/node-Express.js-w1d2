@@ -36,11 +36,18 @@ app.use('/product', (req,res) => {
     console.log(req.body)
     res.redirect('/')
 })
-
 // route
 app.use(shopRouters)
 
-//catch-all-middleware ------ 404
+// catch-all-middleware ------ 404
+app.get('*', (req,res) =>{
+    console.log("Checkkkkk", __dirname, 'public', '404.html');
+    res.sendFile(path.join(__dirname, 'public', '404.html'))
+})
+// app.use((req, res) => {
+//     res.status(404).send("404 Error")
+    
+// })
 
 
 const PORT = process.env.PORT || 5000
